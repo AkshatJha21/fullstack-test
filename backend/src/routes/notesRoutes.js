@@ -1,6 +1,6 @@
 import express from "express";
-import { verifyJwt } from "../middleware/authMiddleware";
-import { createNote, getNotes } from "../controllers/noteController";
+import { verifyJwt } from "../middleware/authMiddleware.js";
+import { createNote, getNotes } from "../controllers/noteController.js";
 
 const router = express.Router();
 

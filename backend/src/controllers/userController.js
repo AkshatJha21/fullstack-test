@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 
 export const signup = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const existing = await userModel.find({ email });
+        const existing = await userModel.findOne({ email });
 
         if (existing) {
             return res.status(401).json({
