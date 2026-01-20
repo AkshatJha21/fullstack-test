@@ -6,11 +6,7 @@ export const signup = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const existing = await userModel.find({
-            $where: {
-                email
-            }
-        });
+        const existing = await userModel.find({ email });
 
         if (existing) {
             return res.status(401).json({
