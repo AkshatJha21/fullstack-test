@@ -64,3 +64,27 @@ export const login = async (req, res) => {
         });
     }
 }
+
+export const checkUser = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.userId);
+
+        if (!user) {
+            return res.status(401).json({
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json({
+            user: {
+                _id: user._id,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching user details: ", error);
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+}
