@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyJwt = (req, res, next) => {
     const authHeader = req.headers.authorization;
+
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
         return res.status(403).json({
             message: "Unauthorised access - no token found"

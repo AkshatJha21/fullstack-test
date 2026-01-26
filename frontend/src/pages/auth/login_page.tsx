@@ -1,32 +1,11 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                if (!token) {
-                    navigate("/login");
-                    return;
-                }
-                const response = await axios.get('http://localhost:3000/api/auth/me', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                navigate('/dashboard');
-            } catch (error) {
-                console.error('Error checking authentication: ', error);
-            }
-        }
-        checkAuth();
-    }, []);
 
     const handleClick = async () => {
         try {
@@ -50,6 +29,7 @@ const LoginPage = () => {
           <input 
             placeholder='johndoe@email.com' 
             type="email" 
+            id="email"
             className='border-2 my-2 border-gray-300 py-2 px-3 w-full rounded-md'
             onChange={(e) => {
               setEmail(e.target.value);
@@ -60,6 +40,7 @@ const LoginPage = () => {
           <p className='text-sm font-medium'>Password</p>
           <input 
             type="password" 
+            id="password"
             className='border-2 my-2 border-gray-300 py-2 px-3 w-full rounded-md'
             onChange={(e) => {
               setPassword(e.target.value);
