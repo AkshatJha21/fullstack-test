@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import Notes from './note';
+import Notes from './notes';
 
 export type Note = {
   _id: string;
