@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import Notes from './note';
 
-type Note = {
+export type Note = {
   _id: string;
   text: string;
   user: string;
@@ -28,21 +29,11 @@ const AllNotes = () => {
         getNotes();
     }, []);
   return (
-    <div>
-      <div className='flex flex-col my-2'>
-            <div 
-                className='border-2 my-2 border-gray-300 py-2 px-3 w-full rounded-md'
-            >
-                {notes.map((note) => (
-    <div
-        key={note._id}
-        className="border-b py-2"
-    >
-        {note.text}
-    </div>
-    ))}
-            </div>
-            </div>
+    <div className='w-[90%] mx-auto my-4'>
+        <p className='text-lg font-bold mt-4 w-full border-b border-gray-200'>Your Notes</p>
+        <div className='flex flex-col my-2'>
+            <Notes notes={notes} />
+        </div>
     </div>
   )
 }
