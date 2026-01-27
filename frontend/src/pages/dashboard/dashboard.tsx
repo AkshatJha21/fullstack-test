@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div className='h-screen w-full'>
         <Navbar header='Dashboard' />
-        <div className='w-[50%] flex flex-col m-auto'>
+        <div className='flex flex-col m-auto'>
             <CreateNotes />
             <AllNotes />
         </div>
