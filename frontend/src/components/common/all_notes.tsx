@@ -29,8 +29,7 @@ const AllNotes = () => {
         getNotes();
     }, []);
   return (
-    <div className='w-[90%] mx-auto my-4'>
-        <p className='text-lg font-bold mt-4 w-full border-b border-gray-100'>Your Notes</p>
+    <div className='w-full'>
         <div className='flex flex-col my-2'>
             <Notes notes={notes} />
         </div>

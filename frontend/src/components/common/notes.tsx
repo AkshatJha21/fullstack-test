@@ -22,7 +22,7 @@ const Notes = ({ notes }: NoteProps) => {
 
 const NoteCard = ({ text }: { text: string }) => {
     return (
-        <div className='px-4 py-2 shadow-sm rounded-md my-2 hover:bg-gray-50 transition'>
+        <div className='px-4 py-2 border font-medium border-slate-200 rounded text-sm hover:bg-slate-200 cursor-pointer transition-all'>
             {text}
         </div>
     )
