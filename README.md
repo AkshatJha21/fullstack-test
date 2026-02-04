@@ -1,0 +1,1 @@
+This project is a Notion-like Notes app but for never forgetting anything - This is Forever notes app
