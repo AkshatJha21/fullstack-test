@@ -10,6 +10,7 @@ const Dashboard = () => {
         {openCreate && (
           <CreateNotes />
         )}
+        Note of the day
     </div>
   )
 }
