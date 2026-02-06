@@ -34,7 +34,7 @@ const CreateNotes = () => {
             onClick={handleClick} 
             className='bg-zinc-900 w-[20%] ml-auto p-2 my-2 text-white rounded-md cursor-pointer hover:bg-zinc-700 transition'
         >
-            Create
+            Save
         </button>
         <button 
             onClick={() => {}} 
