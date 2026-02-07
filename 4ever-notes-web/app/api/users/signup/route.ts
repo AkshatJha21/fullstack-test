@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 import bcrypt from "bcryptjs";
 import connectDB from "@/dbConfig/dbConfig";
-import jwt from "jsonwebtoken";
-
-connectDB();
+import { sign } from "jsonwebtoken";
 
 export async function POST(request: NextRequest) {
     try {
+        await connectDB();
+
         const reqBody = await request.json();
         const { username, email, password } = reqBody;
 
@@ -32,15 +32,7 @@ export async function POST(request: NextRequest) {
         });
 
         const savedUser = await newUser.save();
-        console.log(savedUser);
-
-        const tokenData = {
-            id: user._id,
-            username: user.username,
-            email: user.email
-        };
-        
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+        const token = sign({id: newUser._id}, process.env.TOKEN_SECRET!, {
             expiresIn: "1d"
         });
 
