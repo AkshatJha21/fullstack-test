@@ -5,10 +5,8 @@ import { verify } from "jsonwebtoken";
 
 connectDB();
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
     try {
-        const reqBody = await request.json();
-        const { text } = reqBody;
         const authHeader = request.headers.get("authorization");
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
             return NextResponse.json(
@@ -32,20 +30,23 @@ export async function POST(request: NextRequest) {
             });
         }
 
-        console.log(reqBody);
+        if (!userId) {
+            return NextResponse.json({
+                error: "User id not found",
+            }, {
+                status: 404
+            });
+        }
 
-        const note = new Note({
-            text,
+        const notes = await Note.find({
             user: userId
         });
 
-        await note.save();
-
         return NextResponse.json({
-            message: "New note created!",
-            note
+            message: "Notes fetched successfully",
+            notes
         }, {
-            status: 201
+            status: 200
         });
     } catch (error) {
         return NextResponse.json({
