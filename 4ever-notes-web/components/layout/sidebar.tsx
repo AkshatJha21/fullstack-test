@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import AllNotes from "../notes/all_notes";
 
 interface SidebarProps {
     onCreate: () => void;
@@ -24,7 +25,7 @@ const Sidebar = ({ onCreate, showNOTD }: SidebarProps) => {
         <div className="m-2 ">
             <p className="flex-1 font-bold text-blue-900 text-lg">Your Notes</p>
             <div className="flex flex-col">
-                {/* <AllNotes/> */}
+                <AllNotes/>
             </div>
         </div>
     </div>

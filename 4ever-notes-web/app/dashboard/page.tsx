@@ -1,6 +1,8 @@
 "use client";
 
 import Sidebar from '@/components/layout/sidebar';
+import CreateNotes from '@/components/notes/create_notes';
+import NotdView from '@/components/notes/notd_view';
 import { useState } from 'react';
 
 const Dashboard = () => {
@@ -20,12 +22,12 @@ const Dashboard = () => {
     <div className='h-screen w-full flex'>
         <Sidebar onCreate={handleOpenCreateView} showNOTD={handleShowNOTDView}/>
         <div className='bg-slate-100 w-full'>
-          {/* {openCreate && (
+          {openCreate && (
             <CreateNotes />
           )}
           {showNOTD && (
             <NotdView />
-          )} */}
+          )}
         </div>
     </div>
   )
