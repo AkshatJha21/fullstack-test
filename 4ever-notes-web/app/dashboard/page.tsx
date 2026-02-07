@@ -3,15 +3,16 @@
 import Sidebar from '@/components/layout/sidebar';
 import CreateNotes from '@/components/notes/create_notes';
 import NotdView from '@/components/notes/notd_view';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const Dashboard = () => {
+  const router = useRouter();
   const [openCreate, setOpenCreate] = useState(false);
   const [showNOTD, setShowNOTD] = useState(true);
 
   const handleOpenCreateView = () => {
-    setOpenCreate(true);
-    setShowNOTD(false);
+    router.push("/notes/new");
   }
 
   const handleShowNOTDView = () => {
